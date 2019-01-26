@@ -29,7 +29,7 @@ def loop():
                                     fieldfill +=1
                         else:
                                 if ((dht.temperature < 100) and (dht.humidity < 100)):
-                                    for i in range(0, fieldfill):
+                                    for i in range(0, fieldfill-1):
                                         templist[i] = templist[i+1]
                                         humidlist[i] = humidlist[i+1]                             
                                     templist[10] = dht.temperature
