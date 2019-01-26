@@ -23,12 +23,12 @@ def loop():
                 if (chk is dht.DHTLIB_OK): #read DHT11 and get a return value. Then determine whether data read is normal according to the return value.
                         print("DHT11,OK!")
                         if (fieldfill < 11):
-                                if ((dht.temperature < 100) and (dht.humidity < 100):
+                                if ((dht.temperature < 100) and (dht.humidity < 100)):
                                     templist.append(dht.temperature)
                                     humidlist.append(dht.humidity)
                                     fieldfill +=1
                         else:
-                                if ((dht.temperature < 100) and (dht.humidity < 100):
+                                if ((dht.temperature < 100) and (dht.humidity < 100)):
                                     for i in range(0, fieldfill):
                                         templist[i] = templist[i+1]
                                         humidlist[i] = humidlist[i+1]                             
