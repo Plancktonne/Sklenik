@@ -74,5 +74,6 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         TempIO.close()
         HumIO.close()
+        TimeIO.close()
         GPIO.cleanup()
         exit()
