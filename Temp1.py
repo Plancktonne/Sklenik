@@ -16,7 +16,7 @@ def loop():
         humidlist = []
         rollingavghum = 0
         rollingavgtem = 0
-        f = open('TempOut.txt', 'w')
+        
         while(True):
                 sumCnt += 1 #counting number of reading times
                 chk = dht.readDHT11() #read DHT11 and get a return value. Then determine whether data read is normal according to the return value.
@@ -62,6 +62,7 @@ def loop():
                 time.sleep(3)
 if __name__ == '__main__':
     print ('Program is starting ... ')
+    f = open('TempOut.txt', 'w')
     try:
         loop()
     except KeyboardInterrupt:
