@@ -47,7 +47,7 @@ def loop():
                                         TempIO.write("%.2f, "%(rollingavgtem))
                                         HumIO.write("%.2f, "%(rollingavghum))
                                         localtime = time.localtime(time.time())
-                                        TimeIO.write("%i:%i:%i"%(localtime.tm_hour, localtime.tm_min, localtime.tm_sec))
+                                        TimeIO.write("%i:%i:%i,"%(localtime.tm_hour, localtime.tm_min, localtime.tm_sec))
 
                 elif(chk is dht.DHTLIB_ERROR_CHECKSUM): #data check has errors
                         print("DHTLIB_ERROR_CHECKSUM!!")
