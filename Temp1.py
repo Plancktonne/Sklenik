@@ -75,7 +75,7 @@ def loop():
 
                 lcd.clear()
                 lcd.setCursor(0,0)  # set cursor position
-                lcd.message( 'Temp: %0.2f \n Humid: %0.2f' %(rollingavgtem,rollingavghum))  # display averages
+                lcd.message( 'Temperature: %0.2f'+'\n'+'Humidity: %0.2f' %(rollingavgtem,rollingavghum))  # display averages
                 time.sleep(3)
 
 def destroy():
