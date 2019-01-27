@@ -104,6 +104,7 @@ if __name__ == '__main__':
     try:
         loop()
     except KeyboardInterrupt:
+        destroy()
         TempIO.close()
         HumIO.close()
         TimeIO.close()
