@@ -5,6 +5,7 @@
 import RPi.GPIO as GPIO
 import time
 import Freenove_DHT as DHT
+GPIO.cleanup()
 DHTPin = 11 #define the pin of DHT11
 
 def loop():
@@ -15,6 +16,7 @@ def loop():
         humidlist = []
         rollingavghum = 0
         rollingavgtem = 0
+        f = open('TempOut.txt', 'w')
         while(True):
                 sumCnt += 1 #counting number of reading times
                 chk = dht.readDHT11() #read DHT11 and get a return value. Then determine whether data read is normal according to the return value.
@@ -41,6 +43,8 @@ def loop():
                                             rollingavghum += humidlist[i]
                                     rollingavgtem = round((rollingavgtem / fieldfill), 2)
                                     rollingavghum = round((rollingavghum / fieldfill), 2)
+                                    if ((rollingavgtem != 0) or (rollingavghum != 0)):
+                                        f.write(rollingavgtem)
                 elif(chk is dht.DHTLIB_ERROR_CHECKSUM): #data check has errors
                         print("DHTLIB_ERROR_CHECKSUM!!")
                 elif(chk is dht.DHTLIB_ERROR_TIMEOUT): #reading DHT times out
@@ -61,5 +65,6 @@ if __name__ == '__main__':
     try:
         loop()
     except KeyboardInterrupt:
+        f.close()
         GPIO.cleanup()
         exit()
