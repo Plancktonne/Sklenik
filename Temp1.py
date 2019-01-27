@@ -44,7 +44,11 @@ def loop():
                                     rollingavgtem = round((rollingavgtem / fieldfill), 2)
                                     rollingavghum = round((rollingavghum / fieldfill), 2)
                                     if ((rollingavgtem != 0) or (rollingavghum != 0)):
-                                        f.write("%.2f, "%(rollingavgtem))
+                                        TempIO.write("%.2f, "%(rollingavgtem))
+                                        HumIO.write("%.2f, "%(rollingavghum))
+                                        localtime = time.localtime(time.time())
+                                        TimeIO.write("%i:%i:%i"%(localtime.tm_hour, localtime.tm_min, localtime.tm_sec))
+
                 elif(chk is dht.DHTLIB_ERROR_CHECKSUM): #data check has errors
                         print("DHTLIB_ERROR_CHECKSUM!!")
                 elif(chk is dht.DHTLIB_ERROR_TIMEOUT): #reading DHT times out
@@ -62,10 +66,13 @@ def loop():
                 time.sleep(3)
 if __name__ == '__main__':
     print ('Program is starting ... ')
-    f = open('TempOut.txt', 'w')
+    TempIO = open('TempOut.txt', 'w')
+    HumIO = open('HumOut.txt', 'w')
+    TimeIO = open('TimeOut.txt', 'w')
     try:
         loop()
     except KeyboardInterrupt:
-        f.close()
+        TempIO.close()
+        HumIO.close()
         GPIO.cleanup()
         exit()
