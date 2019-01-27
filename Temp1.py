@@ -44,7 +44,7 @@ def loop():
                                     rollingavgtem = round((rollingavgtem / fieldfill), 2)
                                     rollingavghum = round((rollingavghum / fieldfill), 2)
                                     if ((rollingavgtem != 0) or (rollingavghum != 0)):
-                                        f.write(rollingavgtem)
+                                        f.write("%.2f, "%(rollingavgtem))
                 elif(chk is dht.DHTLIB_ERROR_CHECKSUM): #data check has errors
                         print("DHTLIB_ERROR_CHECKSUM!!")
                 elif(chk is dht.DHTLIB_ERROR_TIMEOUT): #reading DHT times out
