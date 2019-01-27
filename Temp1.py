@@ -5,8 +5,9 @@
 import RPi.GPIO as GPIO
 import time
 import Freenove_DHT as DHT
-from PCF8574 import PCF8574_GPIO
-from Adafruit_LCD1602 import Adafruit_CharLCD
+#from PCF8574 import PCF8574_GPIO
+#from Adafruit_LCD1602 import Adafruit_CharLCD
+from RPLCD import CharLCD
 GPIO.cleanup()
 DHTPin = 11 #define the pin of DHT11
 
@@ -18,8 +19,7 @@ def loop():
         humidlist = []
         rollingavghum = 0
         rollingavgtem = 0
-        mcp.output(3,1)     # turn on LCD backlight
-        lcd.begin(16,2)     # set number of LCD lines and columns
+        lcd = CharLCD(cols=16, rows=2, pin_rs=37, pin_e=35, pins_data=[33, 31, 29, 23])
 
         while(True):
                 sumCnt += 1 #counting number of reading times
@@ -69,27 +69,14 @@ def loop():
                 print(humidlist)
                 print("RollingAVG Humidity: %.2f \n"%(rollingavghum))
                 lcd.clear()
-                lcd.setCursor(0,0)  # set cursor position
-                lcd.message( 'Temp: %0.2f \n Humid: %0.2f' %(rollingavgtem,rollingavghum))  # display averages
+                lcd.cursor_pos = (0,0)  # set cursor position
+                lcd.write_string('Temp: %0.2f \n Humid: %0.2f' %(rollingavgtem,rollingavghum))  # display averages
                 time.sleep(3)
 
 def destroy():
 
     lcd.clear()
 
-PCF8574_address = 0x27  # I2C address of the PCF8574 chip.
-PCF8574A_address = 0x3F  # I2C address of the PCF8574A chip.
-# Create PCF8574 GPIO adapter.
-try:
-	mcp = PCF8574_GPIO(PCF8574A_address)
-except:
-	try:
-		mcp = PCF8574_GPIO(PCF8574_address)
-	except:
-		print ('I2C Address Error !')
-		exit(1)
-# Create LCD, passing in MCP GPIO adapter.
-lcd = Adafruit_CharLCD(pin_rs=0, pin_e=2, pins_db=[4,5,6,7], GPIO=mcp)
 
 if __name__ == '__main__':
     print ('Program is starting ... ')
