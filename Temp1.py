@@ -84,6 +84,7 @@ def loop():
                 lcd.clear()
                 lcd.setCursor(0,0) 
                 lcd.message( 'Zkurvenej')  # display averages
+                time.sleep(1)
 
 def destroy():
 
