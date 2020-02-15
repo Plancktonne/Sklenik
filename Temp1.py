@@ -96,7 +96,7 @@ def loop():                     #Main Loop
 ##irrigation part
 #
                 GPIO.output(36, GPIO.HIGH)
-                sleep(2)
+                time.sleep(2)
                 GPIO.output(36, GPIO.LOW)
 #
 #
