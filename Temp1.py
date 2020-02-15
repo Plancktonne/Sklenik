@@ -95,12 +95,12 @@ def loop():                     #Main Loop
 #
 ##irrigation part
 #
-                GPIO.output(36, GPIO.HIGH)
-                time.sleep(2)
-                GPIO.output(36, GPIO.LOW)
+              ##  GPIO.output(36, GPIO.HIGH)
+            ##    time.sleep(2)
+             #   GPIO.output(36, GPIO.LOW)
 #
 #
-                time.sleep(10) #wait 10s between measurements
+                time.sleep(1) #wait 10s between measurements
              
 
 def destroy():
