@@ -90,6 +90,14 @@ def loop():                     #Main Loop
                 lcd.clear() #clear current message
                 lcd.setCursor(0,0)  # reset cursor position
                 lcd.message( 'Tempera.: %0.2f\nHumidity: %0.2f' %(rollingavgtem,rollingavghum))  # display averages
+#
+##irrigation part
+#
+GPIO.output(36, GPIO.HIGH)
+sleep(2)
+GPIO.output(36, GPIO.LOW)
+#
+#
                 time.sleep(10) #wait 10s between measurements
              
 
