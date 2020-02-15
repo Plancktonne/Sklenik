@@ -18,7 +18,7 @@ PCF8574_address = 0x27  # I2C address of the PCF8574 chip.
 PCF8574A_address = 0x3F  # I2C address of the PCF8574A chip.
 GPIO.setmode(GPIO.BOARD) 
 GPIO.setup(36, GPIO.OUT)
-GPIO.output(36, GPIO.LOW)
+GPIO.output(36, GPIO.HIGH)
 
 
 def loop():                     #Main Loop
@@ -95,9 +95,9 @@ def loop():                     #Main Loop
 #
 ##irrigation part
 #
-                GPIO.output(36, GPIO.HIGH)
-                time.sleep(2)
                 GPIO.output(36, GPIO.LOW)
+                time.sleep(2)
+                GPIO.output(36, GPIO.HIGH)
 #
 #
                 time.sleep(5) #wait 5s between measurements
