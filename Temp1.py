@@ -16,6 +16,7 @@ GPIO.cleanup() #safety cleanup
 DHTPin = 11 #define the pin of DHT11 11=GPIO17
 PCF8574_address = 0x27  # I2C address of the PCF8574 chip.
 PCF8574A_address = 0x3F  # I2C address of the PCF8574A chip.
+GPIO.setmode(GPIO.BOARD) 
 GPIO.setup(36, GPIO.OUT)
 GPIO.output(36, GPIO.LOW)
 
