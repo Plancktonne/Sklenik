@@ -1,8 +1,6 @@
 ########################################################################
-# Filename    : PCF8574.py
 # Description : PCF8574 as Raspberry GPIO
-# Author      : freenove
-# modification: 2018/08/03
+#LCD Displaybus controller library
 ########################################################################
 import smbus
 import time

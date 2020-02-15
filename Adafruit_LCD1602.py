@@ -1,5 +1,5 @@
+#LCD Display Library#
 from time import sleep
-
 
 class Adafruit_CharLCD(object):
 
